@@ -1,0 +1,6 @@
+<div *ngIf="rule" >
+  <h3>Rule ID: {{ rule.id }}</h3><hr>
+  <p><span >Rule description:</span> &nbsp; {{ rule.description }}</p>
+  <p><span >Rule statement:</span> &nbsp; {{ rule.statement }}</p>
+</div><br>
+<button (click)="goBack()" class="btn btn-secondary">Back</button>

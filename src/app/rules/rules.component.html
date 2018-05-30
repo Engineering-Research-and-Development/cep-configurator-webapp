@@ -1,0 +1,23 @@
+<div> <a class=" btn btn-secondary" routerLink="/add-rule/" >add rule</a></div><br>
+<table class="table table-striped table-dark" id="ruleTable">
+  <thead>
+    <tr>
+      <th>#</th>       
+      <th>View details</th>
+      <th>Edit rule</th>
+      <th>Delete rule</th>
+    </tr>
+   </thead>
+    <tbody>
+    <tr *ngFor="let rule of rules">
+      <td>{{ rule.id }}</td>
+      <!-- <td><button class="btn btn-info" (click)="showDetails(rule)">View details</button></td> -->
+      <td><a  routerLink="/rule-details/{{rule.id}}" class="btn btn-info">View details</a></td>
+      <td><a  routerLink="/edit-rule/{{rule.id}}" class="btn btn-primary" >Edit</a></td>
+      <td><button class="btn btn-danger" (click)="deleteRule(rule.id);">Delete</button></td>
+      
+   </tr>    
+   </tbody>
+  
+</table>
+<!-- <app-rule-details [rule]="selectedRule"></app-rule-details> -->

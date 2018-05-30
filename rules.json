@@ -1,0 +1,54 @@
+{
+  "rules": [
+    {
+      "id": 1,
+      "description": "rule description",
+      "statement": "select smh from ev=iotEvent"
+    },
+    {
+      "id": 2,
+      "description": "rule description",
+      "statement": "select * from ev=iotEvent"
+    },
+    {
+      "id": 3,
+      "description": "something wicked this way comes",
+      "statement": "select something from wicked"
+    },
+    {
+      "id": 4,
+      "description": "something wicked this way comes",
+      "statement": "select something from wicked"
+    },
+    {
+      "id": 5,
+      "description": "something wicked this way comes",
+      "statement": "select something from wicked"
+    },
+    {
+      "id": 6,
+      "description": "something wicked this way comes",
+      "statement": "select something from wicked"
+    },
+    {
+      "id": 7,
+      "description": "something wicked this way comes",
+      "statement": "select something from wicked"
+    },
+    {
+      "id": 8,
+      "description": "something wicked this way comes",
+      "statement": "select something from wicked"
+    },
+    {
+      "id": 9,
+      "description": "something wicked this way comes",
+      "statement": "select something from wicked"
+    },
+    {
+      "id": 10,
+      "description": "something wicked this way comes",
+      "statement": "select something from wicked"
+    }
+  ]
+}
