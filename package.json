@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-windows": "start /B docker-compose up & ng serve",
+    "start-windows": "start docker-compose up & ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
