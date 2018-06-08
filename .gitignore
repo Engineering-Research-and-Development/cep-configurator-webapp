@@ -34,6 +34,8 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+package-lock.json
+/docker-compose.yml
 
 # e2e
 /e2e/*.js
@@ -42,6 +44,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# Garbage&Stuff
-package-lock.json
