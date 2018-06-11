@@ -33,6 +33,26 @@ describe('CepEngineService', () => {
         })
       }
     )));
+
+    it('should complete', async(inject([CepEngineService],
+      (service: CepEngineService) => {
+        var completeFuncContainer = {
+          func:() => {}
+        };
+        spyOn(completeFuncContainer, 'func');
+        service.getEngines().subscribe({
+          next: () => {},
+          complete: completeFuncContainer.func
+        });
+        setTimeout (
+          () => {
+            expect(completeFuncContainer.func).toHaveBeenCalledTimes(1);
+          },
+          2000
+        )
+      }
+    )));
+
   })
 
   describe('getEngine', () => {
