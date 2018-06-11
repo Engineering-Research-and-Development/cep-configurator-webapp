@@ -44,7 +44,7 @@ describe('CepEngineService', () => {
           next: () => {},
           complete: completeFuncContainer.func
         });
-        setTimeout (
+        setTimeout(
           () => {
             expect(completeFuncContainer.func).toHaveBeenCalledTimes(1);
           },
