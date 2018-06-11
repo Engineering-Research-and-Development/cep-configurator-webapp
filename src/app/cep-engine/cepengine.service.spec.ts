@@ -46,6 +46,18 @@ describe('CepEngineService', () => {
         })
       }
     )));
+
+    it('should not allow hacks', async(inject([CepEngineService],
+      (service: CepEngineService) => {
+        service.getEngine('testing/rules').subscribe({
+          next: () => {},
+          error: (err) => {
+            expect(err).toBeTruthy();
+          }
+        })
+      }
+    )));
+
   });
 
 });

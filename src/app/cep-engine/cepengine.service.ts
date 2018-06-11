@@ -13,8 +13,8 @@ export class CepEngineService {
     return this.http.get(this.hostUrl + "/engines");
   }
 
-  getEngine(engineId: String) {
-    return this.http.get(this.hostUrl + "/engines/" + engineId);
+  getEngine(engineId: string) {
+    return this.http.get(this.hostUrl + "/engines/" + encodeURIComponent(engineId));
   }
 
 }
