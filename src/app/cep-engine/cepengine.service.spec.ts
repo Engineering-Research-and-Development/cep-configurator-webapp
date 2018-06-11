@@ -22,7 +22,7 @@ describe('CepEngineService', () => {
     }
   ));
 
-  describe ('getEngines', () => {
+  describe('getEngines', () => {
 
     it('should provide an array of engines on success', async(inject([CepEngineService],
       (service: CepEngineService) => {
@@ -34,5 +34,18 @@ describe('CepEngineService', () => {
       }
     )));
   })
+
+  describe('getEngine', () => {
+
+    it('should provide an engine on success', async(inject([CepEngineService],
+      (service: CepEngineService) => {
+        service.getEngine('testing').subscribe({
+          next: arg => {
+            expect(arg).toEqual(jasmine.any(Object));
+          }
+        })
+      }
+    )));
+  });
 
 });
