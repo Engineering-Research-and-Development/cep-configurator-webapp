@@ -1,18 +1,14 @@
 const { exec } = require('child_process');
 
-let execOutputFunc = (err, stdout, stderr) => {
-    console.log(`Error happened: ${err.message}`);
-    console.log('Stdout: ' + stdout);
-    console.log('Stderr: ' + stderr);
-}
+let log = (data) => {console.log(data);}
 
 var OStoScriptComposite = {
     Windows: {
         isCurrentOS: 'win32' === process.platform,
         action: () => {
-            exec('docker-compose up', execOutputFunc);
-            exec('npm test', execOutputFunc);
-            exec('npm run-script serve', execOutputFunc);
+            exec('docker-compose up').stdout.on('data', log);
+            exec('npm test').stdout.on('data', log);
+            exec('npm run-script serve').stdout.on('data', log);
         }
     }
 };
