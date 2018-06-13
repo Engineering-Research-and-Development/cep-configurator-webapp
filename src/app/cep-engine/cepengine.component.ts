@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { CepEngine } from './cep-engine';
 import { CepEngineService } from './cepengine.service';
 import { Observable } from 'rxjs';
@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class CepEngineComponent implements OnInit {
 
-  private selectedValue: any;
+  @Output() engineSelection = new EventEmitter();
+  private selectedEngine: any;
   private cepEngines: any;
 
   constructor(public service: CepEngineService) {}
@@ -23,8 +24,8 @@ export class CepEngineComponent implements OnInit {
     );
   }
 
-  getSelectedEngine() {
-    return this.selectedValue;
+  triggerEngineSelection(event) {
+    this.engineSelection.emit(event.value);
   }
 
 }
