@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class CepEngineComponent implements OnInit {
 
-  @Output() engineSelection = new EventEmitter();
+  @Output() engineSelection:EventEmitter<CepEngine> = new EventEmitter<CepEngine>();
   private selectedEngine: any;
   private cepEngines: any;
 
@@ -25,7 +25,10 @@ export class CepEngineComponent implements OnInit {
   }
 
   private triggerEngineSelection(event) {
-    this.engineSelection.emit(event.value);
+    var emitee = new CepEngine();
+    emitee.engineId = event.value.engineId;
+    emitee.engineType = event.value.engineType;
+    this.engineSelection.emit(emitee);
   }
 
 }
