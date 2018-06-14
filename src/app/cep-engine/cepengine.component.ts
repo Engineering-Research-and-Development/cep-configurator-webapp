@@ -24,7 +24,7 @@ export class CepEngineComponent implements OnInit {
     );
   }
 
-  triggerEngineSelection(event) {
+  private triggerEngineSelection(event) {
     this.engineSelection.emit(event.value);
   }
 
