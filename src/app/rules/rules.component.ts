@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+import { Http } from '@angular/http';
 
-import { Rule } from '../rule.model';
-// import { RULES } from '../mock-rules';
 import { RuleService } from '../rule.service';
-import { HttpClient } from '@angular/common/http';
-import { element } from 'protractor';
-
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-rules',
@@ -13,46 +11,46 @@ import { element } from 'protractor';
   styleUrls: ['./rules.component.css']
 })
 export class RulesComponent implements OnInit {
+  rules = [];
 
-  // selectedRule: Rule;- no longer in use
-
-  rules=[];
-
-  // showDetails(rule: Rule): void{ - more ded code
-  //   this.selectedRule = rule;
-  //   console.log("snj");
-    
-  // }
-
-  constructor(private ruleModel: Rule, private ruleService: RuleService){}
+  constructor(private route: ActivatedRoute, private ruleService: RuleService, private location: Location, private http: Http) {}
 
   ngOnInit() {
-    // this.rules.push(this.ruleModel)
-    // console.log(this.rules);
-    this.getRules();
+    this.getEngineRules();
   }
 
-  getRules(): void{
-    this.ruleService.getRules().subscribe(rules => {
-            this.rules = rules;
-      
-      });
+  getEngines(): void {
+    this.ruleService.getEngines().subscribe(rules => {
+      this.rules = rules;
+      console.log('njanja ' + rules);
+    });
   }
 
-  getRule(name: string): void{
-   this.rules.forEach((element) => {
-      if(name==element.name){
+  getRule(name: string): void {
+    // tslint:disable-next-line:no-shadowed-variable
+    this.rules.forEach(element => {
+      // tslint:disable-next-line:triple-equals
+      if (name == element.name) {
         return element;
       }
     });
   }
 
-  deleteRule(id: number){
-    this.ruleService.deleteRule(id).subscribe(res =>{ 
-      this.getRules();
-      console.log('pravilo sa ID '+id+' obrisano')});
-    
+  getEngineRules(): any {
+    const id = this.route.snapshot.paramMap.get('engineId');
+    this.ruleService.getEngineRules(id).subscribe(res => { this.rules = res; console.log(res); });
   }
 
-  
+  deleteRule(engineId: string, ruleId: string) {
+    const url = `http://localhost:8091/engines/${engineId}/rules/${ruleId}`;
+    console.log(engineId, ruleId);
+    this.http.delete(url).subscribe();
+    const index = this.rules.indexOf(ruleId);
+    this.rules.splice(index, 1);
+  }
+
+
+  goBack(): void {
+    this.location.back();
+  }
 }
