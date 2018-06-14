@@ -1,0 +1,13 @@
+<form>
+  <mat-form-field>
+    <mat-select
+      placeholder="CepEngine"
+      [(value)]="selectedEngine"
+      (selectionChange)="triggerEngineSelection($event)"
+    >
+      <mat-option *ngFor="let engine of cepEngines" [value]="engine">
+        {{engine.engineId}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
