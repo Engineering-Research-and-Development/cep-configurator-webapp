@@ -1,12 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Http } from '@angular/http';
 
-import { Rule } from '../rule.model';
-import { RuleService }  from '../rule.service';
-import { RulesComponent } from '../rules/rules.component';
-import { identifierModuleUrl } from '@angular/compiler';
-
+import { RuleService } from '../rule.service';
 
 @Component({
   selector: 'app-rule-details',
@@ -14,31 +11,40 @@ import { identifierModuleUrl } from '@angular/compiler';
   styleUrls: ['./rule-details.component.css']
 })
 export class RuleDetailsComponent implements OnInit {
-
   // @Input() rule: Rule;
 
-  
   constructor(
     private route: ActivatedRoute,
     private ruleService: RuleService,
-    private location: Location,
-    // private detalj: RulesComponent
-  ) { }
+    private location: Location, // private detalj: RulesComponent
+    private http: Http
+  ) {}
 
-  rule: any
+   rule: any;
 
   ngOnInit(): void {
-    this.getRule();
+    this.getRuleDetails();
   }
 
-  getRule(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    
-    this.ruleService.getRule(id).subscribe(rule => {
-            this.rule = rule;      
-      });  
+  getRuleDetails(): void {
+    const idRule = this.route.snapshot.paramMap.get('ruleId');
+    const idEngine = this.route.snapshot.paramMap.get('engineId');
+    console.log(idRule, idEngine);
+    this.ruleService.getRuleDetails(idEngine, idRule).subscribe(rule => {
+      this.rule = rule;
+    });
   }
-  
+
+  saveChange(id: string, description: string, statement: string) {
+    const engineId = this.route.snapshot.paramMap.get('engineId');
+    const url = `http://localhost:8091/engines/${engineId}/rules/${id}`;
+
+      this.http.put(url, {'description': description, 'statement': statement})
+      .subscribe(res => console.log('saved'));
+
+    }
+
+
   goBack(): void {
     this.location.back();
   }

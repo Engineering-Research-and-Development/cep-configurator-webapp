@@ -11,3 +11,7 @@ hr {
 span {
     font-size: 20px;
 }
+
+input[name=des] {
+  width: 90%;
+}

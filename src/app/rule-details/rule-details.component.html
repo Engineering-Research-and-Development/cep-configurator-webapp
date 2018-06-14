@@ -1,6 +1,21 @@
-<div *ngIf="rule" >
-  <h3>Rule ID: {{ rule.id }}</h3><hr>
+<div *ngIf='rule'>
+  <h3>Rule ID: {{ rule.ruleId }}</h3><hr>
   <p><span >Rule description:</span> &nbsp; {{ rule.description }}</p>
   <p><span >Rule statement:</span> &nbsp; {{ rule.statement }}</p>
 </div><br>
+
+<h4>Change rule details</h4>
+<hr>
+<div *ngIf='rule' class="row">
+  <div class="col-sm">
+    <label >Description</label>
+    <input name="des" type="text"  [(ngModel)]="rule.description">
+  </div>
+  <div class="col-sm">
+    <label class="align-top">Statement</label>
+    <textarea [(ngModel)]="rule.statement" cols="50" rows="10"></textarea>
+  </div>
+
+</div>
+<button (click)="saveChange(rule.ruleId, rule.description, rule.statement)" class="btn btn-primary">Save</button>
 <button (click)="goBack()" class="btn btn-secondary">Back</button>
