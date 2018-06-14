@@ -46,4 +46,15 @@ export class CepRuleService {
     );
   }
 
+  updateRule(engineId: string, ruleId: string, rule: any) {
+    return this.http.put(
+      this.hostUrl +
+      "/engines/" +
+      encodeURIComponent(engineId) +
+      "/rules/" +
+      encodeURIComponent(ruleId),
+      rule
+    )
+  }
+
 }
