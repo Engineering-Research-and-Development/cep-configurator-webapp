@@ -9,7 +9,7 @@ export class CepEngineService {
     @Inject('CepMiddlewareUrl') private hostUrl: string
   ) {}
 
-  getEngines () {
+  getEngines() {
     return this.http.get(this.hostUrl + "/engines");
   }
 
