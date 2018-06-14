@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
@@ -6,7 +6,7 @@ export class CepEngineService {
 
   constructor (
     private http: HttpClient,
-    private hostUrl: string
+    @Inject('hostUrl') private hostUrl: string
   ) {}
 
   getEngines () {

@@ -9,8 +9,8 @@ describe('CepEngineService', () => {
       providers: [
         CepEngineService,
         {
-          provide: String,
-          useValue: 'http://localhost:8091'
+          provide: 'hostUrl',
+          useValue: "http://localhost:8091"
         }
       ]
     });
