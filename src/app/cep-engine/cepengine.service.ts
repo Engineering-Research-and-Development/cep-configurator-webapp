@@ -6,7 +6,7 @@ export class CepEngineService {
 
   constructor (
     private http: HttpClient,
-    @Inject('hostUrl') private hostUrl: string
+    @Inject('CepMiddlewareUrl') private hostUrl: string
   ) {}
 
   getEngines () {

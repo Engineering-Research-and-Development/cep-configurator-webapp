@@ -29,7 +29,7 @@ describe('CepEngineComponent', () => {
       providers: [
         CepEngineService,
         {
-          provide: 'hostUrl',
+          provide: 'CepMiddlewareUrl',
           useValue: "http://localhost:8091"
         }
       ]
