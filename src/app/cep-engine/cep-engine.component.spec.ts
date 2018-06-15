@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
-import { CepEngineComponent } from './cepengine.component';
+import { CepEngineComponent } from './cep-engine.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { CepEngineService } from './cepengine.service';
+import { CepEngineService } from './cep-engine.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('CepEngineComponent', () => {
