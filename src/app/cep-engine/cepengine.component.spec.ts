@@ -29,8 +29,8 @@ describe('CepEngineComponent', () => {
       providers: [
         CepEngineService,
         {
-          provide: String,
-          useValue: 'http://localhost:8091'
+          provide: 'CepMiddlewareUrl',
+          useValue: "http://localhost:8091"
         }
       ]
     })
