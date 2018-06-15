@@ -4,7 +4,7 @@ import { CepEngineService } from './cep-engine.service';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-cepengine',
+  selector: 'cep-engine',
   templateUrl: './cep-engine.component.html',
   styleUrls: ['./cep-engine.component.css']
 })
