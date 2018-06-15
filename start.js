@@ -7,7 +7,6 @@ var OStoScriptComposite = {
         isCurrentOS: 'win32' === process.platform,
         action: () => {
             exec('docker-compose up').stdout.on('data', log);
-            exec('npm test').stdout.on('data', log);
             exec('npm run-script serve').stdout.on('data', log);
         }
     }
