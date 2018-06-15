@@ -1,0 +1,18 @@
+<p>
+  perseo-core-rule-creator works! {{engineId}}
+</p>
+<form (ngSubmit)="submit()">
+  <mat-form-field>
+    <input matInput
+      [(ngModel)] = "perseoCoreRule.statement"
+      name = "statement"
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput
+      [(ngModel)] = "perseoCoreRule.description"
+      name = "description"
+    >
+  </mat-form-field>
+  <button type="submit">Submit!</button>
+</form>
