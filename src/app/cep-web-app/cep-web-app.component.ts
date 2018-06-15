@@ -7,13 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CepWebAppComponent implements OnInit {
 
+  engine;
+
   constructor() { }
 
   ngOnInit() {
   }
 
-  private test(x){
-    console.log(x)
+  private updateEditor(engine) {
+    this.engine = engine;
   }
 
 }
