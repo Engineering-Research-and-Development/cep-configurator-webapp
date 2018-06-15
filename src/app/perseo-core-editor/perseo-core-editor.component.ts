@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'perseo-core-editor',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./perseo-core-editor.component.css']
 })
 export class PerseoCoreEditorComponent implements OnInit {
+
+  @Input() engineId;
 
   constructor() { }
 
