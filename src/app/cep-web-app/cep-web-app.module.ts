@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CepEngineModule } from '../cep-engine/cep-engine.module';
+import { CepEngineEditorModule } from '../cep-engine-editor/cep-engine-editor.module';
+
 import { CepWebAppComponent } from './cep-web-app.component';
 
 @NgModule({
@@ -9,7 +11,8 @@ import { CepWebAppComponent } from './cep-web-app.component';
   ],
   imports: [
     CommonModule,
-    CepEngineModule
+    CepEngineModule,
+    CepEngineEditorModule
   ],
   exports: [
     CepWebAppComponent
