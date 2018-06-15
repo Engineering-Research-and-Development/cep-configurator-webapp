@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms/';
 import { HttpClientModule } from '@angular/common/http';
-import { Http, Response } from "@angular/http";
-import { HttpModule } from "@angular/http"; 
+import { Http, Response, JsonpModule, Jsonp } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { AddRuleComponent } from './add-rule/add-rule.component';
@@ -15,7 +15,8 @@ import { RuleService } from './rule.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RulesComponent } from './rules/rules.component';
 import { Rule } from './rule.model';
-
+import { EnginesComponent } from './engines/engines.component';
+import { EngineDetailsComponent } from './engine-details/engine-details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { Rule } from './rule.model';
     AddRuleComponent,
     EditRuleComponent,
     RuleDetailsComponent,
-    RulesComponent
+    RulesComponent,
+    EnginesComponent,
+    EngineDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +34,9 @@ import { Rule } from './rule.model';
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    
-
+    JsonpModule
   ],
-  providers: [RuleService, Rule,],
+  providers: [RuleService, Rule],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
