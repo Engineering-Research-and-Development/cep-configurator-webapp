@@ -1,7 +1,14 @@
 <p>
   cep-engine-editor works!
 </p>
-<div *ngIf="cepEngine">
-  {{cepEngine.engineId}}
-  {{cepEngine.engineType}}
+<div [ngSwitch]="cepEngine?.engineType">
+  <ng-container *ngSwitchCase="'PerseoCore'">
+    <perseo-core-editor></perseo-core-editor>
+  </ng-container>
+  <ng-container *ngSwitchCase="'PerseoFrontEnd'">
+    <perseo-front-end-editor></perseo-front-end-editor>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <default-editor></default-editor>
+  </ng-container>
 </div>
