@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions, Jsonp } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 
 @Injectable()
@@ -39,7 +38,6 @@ export class RuleService {
 
   addRule(id, data) {
     const url = `http://localhost:8091/engines/${id}/rules`;
-    console.log(id, data, url);
 
     const header = new Headers({ 'Content-Type': 'application/json' });
 
@@ -47,7 +45,7 @@ export class RuleService {
     let opts = new RequestOptions();
     opts.headers = header;
 
-    console.log(this.http.post(url, data, opts).subscribe(res => res.json()));
+    this.http.post(url, data, opts).subscribe();
   }
 
   deleteRule(id: string) {
