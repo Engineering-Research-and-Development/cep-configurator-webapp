@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { CepRuleService } from 'app/cep-rule/cep-rule.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'cep-statement',
@@ -9,23 +10,28 @@ import { CepRuleService } from 'app/cep-rule/cep-rule.service';
 export class StatementComponent implements OnInit {
 
   @Input() initialStatement;
-  @Output() changedStatement = new EventEmitter();
   editable = false;
+  statement;
 
   constructor(
     private service: CepRuleService
   ) { }
 
   ngOnInit() {
+    this.statement = this.initialStatement;
   }
 
-  private toggleEdit() {
-
+  private enableEdit() {
+    this.editable = true;
   }
 
-  test(x) {
-    console.log('testing');
-    console.log(x)
+  private resetContent() {
+    this.statement = this.initialStatement;
+  }
+
+  private cancelEdit() {
+    this.resetContent();
+    this.editable = false;
   }
 
 }

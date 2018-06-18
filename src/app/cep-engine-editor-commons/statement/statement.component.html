@@ -1,8 +1,8 @@
-<textarea [disabled]="!editable">{{initialStatement}}</textarea>
+<textarea [disabled]="!editable" [(ngModel)]="statement">{{initialStatement}}</textarea>
 <ng-container *ngIf="editable; else notEditable">
-  <button>Reset</button>
-  <button>Cancel</button>
+  <button (click)="resetContent()">Reset</button>
+  <button (click)="cancelEdit()">Cancel</button>
 </ng-container>
 <ng-template #notEditable>
-    <button>Edit</button>
+    <button (click)="enableEdit()">Edit</button>
 </ng-template>
