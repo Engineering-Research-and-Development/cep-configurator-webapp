@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnChanges , Input } from '@angular/core';
 import { CepRuleService } from 'app/cep-rule/cep-rule.service';
 
 @Component({
@@ -6,9 +6,10 @@ import { CepRuleService } from 'app/cep-rule/cep-rule.service';
   templateUrl: './perseo-core-rule-list.component.html',
   styleUrls: ['./perseo-core-rule-list.component.css']
 })
-export class PerseoCoreRuleListComponent implements OnInit {
+export class PerseoCoreRuleListComponent implements OnInit, OnChanges {
 
   @Input() engineId;
+  @Input() trigger;
 
   rules;
 
@@ -17,6 +18,10 @@ export class PerseoCoreRuleListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.updateRulesList();
+  }
+
+  ngOnChanges() {
     this.updateRulesList();
   }
 

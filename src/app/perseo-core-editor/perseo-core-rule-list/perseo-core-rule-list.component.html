@@ -1,16 +1,13 @@
-<p>
-  perseo-core-rule-list works!
-  <mat-accordion *ngFor="let rule of rules">
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{rule.ruleId}}
-        </mat-panel-title>
-        <mat-panel-description>
-          {{rule.description}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      {{rule.statement}}
-    </mat-expansion-panel>
-  </mat-accordion>
-</p>
+<mat-accordion *ngFor="let rule of rules">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{rule.ruleId}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{rule.description}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <cep-statement [initialStatement]="rule.statement"></cep-statement>
+  </mat-expansion-panel>
+</mat-accordion>
