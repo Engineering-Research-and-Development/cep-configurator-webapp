@@ -9,6 +9,7 @@ import { CepRuleService } from 'app/cep-rule/cep-rule.service';
 export class PerseoCoreRuleCreatorComponent implements OnInit {
 
   @Input() engineId;
+
   perseoCoreRule = {
     statement: null,
     description: null
