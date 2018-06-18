@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { CepRuleService } from 'app/cep-rule/cep-rule.service';
 
 @Component({
@@ -9,6 +9,8 @@ import { CepRuleService } from 'app/cep-rule/cep-rule.service';
 export class PerseoCoreRuleCreatorComponent implements OnInit {
 
   @Input() engineId;
+
+  @Output() creationEvent = new EventEmitter<Boolean>();
 
   perseoCoreRule = {
     statement: null,
@@ -25,7 +27,9 @@ export class PerseoCoreRuleCreatorComponent implements OnInit {
   submit() {
     this.service
       .createRule(this.engineId, this.perseoCoreRule)
-      .subscribe();
+      .subscribe( () => {
+        this.creationEvent.emit(true);
+      });
   }
 
 }

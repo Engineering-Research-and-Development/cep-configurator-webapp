@@ -1,18 +1,15 @@
-<p>
-  perseo-core-rule-creator works! {{engineId}}
-</p>
 <form (ngSubmit)="submit()">
   <mat-form-field>
-    <input matInput
+    <textarea matInput
       [(ngModel)] = "perseoCoreRule.statement"
       name = "statement"
-    >
+    ></textarea>
   </mat-form-field>
   <mat-form-field>
-    <input matInput
+    <textarea matInput
       [(ngModel)] = "perseoCoreRule.description"
       name = "description"
-    >
+    ></textarea>
   </mat-form-field>
-  <button type="submit">Submit!</button>
+  <button mat-button type="submit">Submit!</button>
 </form>

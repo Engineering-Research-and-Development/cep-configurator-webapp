@@ -8,10 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PerseoCoreEditorComponent implements OnInit {
 
   @Input() engineId;
+  trigger = true;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  triggerListUpdate() {
+    this.trigger = !this.trigger;
   }
 
 }
