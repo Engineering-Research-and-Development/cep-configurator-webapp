@@ -1,13 +1,7 @@
 <mat-accordion *ngFor="let rule of rules">
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{rule.ruleId}}
-      </mat-panel-title>
-      <mat-panel-description>
-        {{rule.description}}
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <cep-statement [initialStatement]="rule.statement"></cep-statement>
-  </mat-expansion-panel>
+  <perseo-core-rule-editor
+    [rule]="rule"
+    (updateEvent)="triggerSelf()"
+    (deletionEvent)="triggerSelf()"
+  ></perseo-core-rule-editor>
 </mat-accordion>

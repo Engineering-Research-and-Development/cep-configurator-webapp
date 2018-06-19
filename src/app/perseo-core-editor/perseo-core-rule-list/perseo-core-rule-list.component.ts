@@ -1,4 +1,11 @@
-import { Component, OnInit, OnChanges , Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnChanges,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { CepRuleService } from 'app/cep-rule/cep-rule.service';
 
 @Component({
@@ -8,10 +15,10 @@ import { CepRuleService } from 'app/cep-rule/cep-rule.service';
 })
 export class PerseoCoreRuleListComponent implements OnInit, OnChanges {
 
+  rules;
   @Input() engineId;
   @Input() trigger;
-
-  rules;
+  @Output() triggerChange = new EventEmitter();
 
   constructor(
     private service: CepRuleService
@@ -29,6 +36,12 @@ export class PerseoCoreRuleListComponent implements OnInit, OnChanges {
     this.service.getRules(this.engineId).subscribe(
       (data) => {this.rules = data}
     );
+  }
+
+  triggerSelf() {
+    console.log('triggered' + this.trigger);
+    this.trigger = !this.trigger;
+    this.triggerChange.emit(this.trigger);
   }
 
 }
