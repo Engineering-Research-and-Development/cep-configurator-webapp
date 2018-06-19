@@ -12,12 +12,14 @@ import {
 import { PerseoCoreEditorComponent } from './perseo-core-editor.component';
 import { PerseoCoreRuleCreatorComponent } from './perseo-core-rule-creator/perseo-core-rule-creator.component';
 import { PerseoCoreRuleListComponent } from './perseo-core-rule-list/perseo-core-rule-list.component';
+import { PerseoCoreRuleEditorComponent } from './perseo-core-rule-editor/perseo-core-rule-editor.component';
 
 @NgModule({
   declarations: [
     PerseoCoreEditorComponent,
     PerseoCoreRuleCreatorComponent,
-    PerseoCoreRuleListComponent
+    PerseoCoreRuleListComponent,
+    PerseoCoreRuleEditorComponent
   ],
   imports: [
     CommonModule,
