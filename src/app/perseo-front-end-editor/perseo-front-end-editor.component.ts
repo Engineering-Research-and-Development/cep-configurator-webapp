@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'perseo-front-end-editor',
@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PerseoFrontEndEditorComponent implements OnInit {
 
+  @Input() engineId;
+  trigger = true;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  triggerListUpdate() {
+    this.trigger = !this.trigger;
   }
 
 }

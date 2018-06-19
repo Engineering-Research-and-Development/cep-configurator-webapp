@@ -1,0 +1,21 @@
+<form (ngSubmit)="submit()">
+  <mat-form-field>
+    <textarea matInput
+      [(ngModel)] = "perseoFERule.statement"
+      name = "statement"
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput
+      [(ngModel)] = "perseoFERule.description"
+      name = "description"
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field>
+      <textarea matInput
+        [(ngModel)] = "action"
+        name = "action"
+      ></textarea>
+    </mat-form-field>
+  <button mat-button type="submit">Submit!</button>
+</form>

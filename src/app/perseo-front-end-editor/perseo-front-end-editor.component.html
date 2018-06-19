@@ -1,3 +1,12 @@
-<p>
-  perseo-front-end-editor not implemented yet.
-</p>
+<div>
+  <perseo-fe-rule-creator
+    [engineId]="engineId"
+    (creationEvent)="triggerListUpdate()"
+  >
+  </perseo-fe-rule-creator>
+  <perseo-fe-rule-list
+    [engineId]="engineId"
+    [(trigger)]="trigger"
+  >
+  </perseo-fe-rule-list>
+</div>
