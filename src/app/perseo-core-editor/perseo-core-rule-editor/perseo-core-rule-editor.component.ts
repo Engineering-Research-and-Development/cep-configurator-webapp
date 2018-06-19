@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CepRuleService } from '../../cep-rule/cep-rule.service';
+import { CepRuleService } from 'app/cep-rule/cep-rule.service';
 
 @Component({
   selector: 'perseo-core-rule-editor',
