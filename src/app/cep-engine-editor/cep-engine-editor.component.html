@@ -3,7 +3,7 @@
     <perseo-core-editor [engineId]="cepEngine?.engineId"></perseo-core-editor>
   </ng-container>
   <ng-container *ngSwitchCase="'PerseoFrontEnd'">
-    <perseo-front-end-editor></perseo-front-end-editor>
+    <perseo-front-end-editor [engineId]="cepEngine?.engineId"></perseo-front-end-editor>
   </ng-container>
   <ng-container *ngSwitchDefault>
     <default-editor></default-editor>
