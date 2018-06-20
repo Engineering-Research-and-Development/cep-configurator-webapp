@@ -39,7 +39,6 @@ export class PerseoFeRuleListComponent implements OnInit, OnChanges {
   }
 
   triggerSelf() {
-    console.log('triggered' + this.trigger);
     this.trigger = !this.trigger;
     this.triggerChange.emit(this.trigger);
   }
