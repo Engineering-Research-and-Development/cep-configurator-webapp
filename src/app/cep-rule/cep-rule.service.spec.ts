@@ -109,7 +109,6 @@ describe('CepRuleService', () => {
                     }
                   )
                 });
-                
               }
             );
           },
@@ -118,7 +117,7 @@ describe('CepRuleService', () => {
           }
         )
       }
-    )))
+    )));
 
   });
 

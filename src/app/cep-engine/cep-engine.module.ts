@@ -6,9 +6,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { CepEngineComponent } from './cepengine.component';
-import { CepEngineService } from './cepengine.service';
-import { CepEngine } from './cep-engine';
+import { CepEngineComponent } from './cep-engine.component';
+import { CepEngineService } from './cep-engine.service';
 
 @NgModule({
   declarations: [

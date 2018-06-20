@@ -1,0 +1,7 @@
+<mat-accordion *ngFor="let rule of rules">
+  <perseo-core-rule-editor
+    [rule]="rule"
+    (updateEvent)="triggerSelf()"
+    (deletionEvent)="triggerSelf()"
+  ></perseo-core-rule-editor>
+</mat-accordion>

@@ -1,6 +1,6 @@
 import { TestBed, inject, async } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { CepEngineService } from './cepengine.service';
+import { CepEngineService } from './cep-engine.service';
 
 describe('CepEngineService', () => {
   beforeEach(() => {

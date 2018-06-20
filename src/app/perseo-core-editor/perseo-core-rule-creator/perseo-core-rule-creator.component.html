@@ -1,0 +1,15 @@
+<form (ngSubmit)="submit()">
+  <mat-form-field>
+    <textarea matInput
+      [(ngModel)] = "perseoCoreRule.statement"
+      name = "statement"
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <textarea matInput
+      [(ngModel)] = "perseoCoreRule.description"
+      name = "description"
+    ></textarea>
+  </mat-form-field>
+  <button mat-button type="submit">Submit!</button>
+</form>

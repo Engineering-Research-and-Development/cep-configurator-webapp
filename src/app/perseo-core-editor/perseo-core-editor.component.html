@@ -1,0 +1,11 @@
+<div>
+  <perseo-core-rule-creator
+    [engineId]="engineId"
+    (creationEvent)="triggerListUpdate()"
+  >
+  </perseo-core-rule-creator>
+  <perseo-core-rule-list
+    [engineId]="engineId"
+    [(trigger)]="trigger"
+  ></perseo-core-rule-list>
+</div>
