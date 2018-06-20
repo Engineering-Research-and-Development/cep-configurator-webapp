@@ -13,6 +13,10 @@ export class RuleService {
       .map(res => res.json());
   }
 
+  getEngine(id: string): any {
+    return this.http.get(`http://localhost:8091/engines/${id}`).map(res => res.json());
+  }
+
   getRules(id: string): any {
     //  console.log(id + ' u servisu');
     const url = `http://localhost:8091/engines/${id}/rules`;
@@ -47,6 +51,14 @@ export class RuleService {
 
     this.http.post(url, data, opts).subscribe();
   }
+
+  updateRule(engineId, data) {
+    // const engineId = this.route.snapshot.paramMap.get('engineId');
+    const url = `http://localhost:8091/engines/${engineId}/rules/${data.id}`;
+
+      this.http.put(url, data).subscribe(res => console.log(res));
+
+    }
 
   deleteRule(id: string) {
       // return this.http.delete(url);

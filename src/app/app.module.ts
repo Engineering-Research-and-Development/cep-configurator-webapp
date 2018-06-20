@@ -2,10 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms/';
 import { HttpClientModule } from '@angular/common/http';
-import { Http, Response, JsonpModule, Jsonp } from '@angular/http';
 import { HttpModule } from '@angular/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
 
 import { AppComponent } from './app.component';
 import { AddRuleComponent } from './add-rule/add-rule.component';
@@ -33,8 +30,7 @@ import { EngineDetailsComponent } from './engine-details/engine-details.componen
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpModule,
-    JsonpModule
+    HttpModule
   ],
   providers: [RuleService, Rule],
   bootstrap: [AppComponent]

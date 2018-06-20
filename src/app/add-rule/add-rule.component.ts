@@ -15,7 +15,6 @@ export class AddRuleComponent implements OnInit {
 
   // rule: Rule;
 
-
   constructor(
     private route: ActivatedRoute,
     private ruleService: RuleService,
@@ -27,25 +26,48 @@ export class AddRuleComponent implements OnInit {
     this.getEngines();
   }
 
+  addRule(
+    id: string,
+    description: string,
+    statement: string,
+    actionType: string,
+    actionName: string,
+    actionValue: boolean,
+    typeValue: string
+  ) {
 
-  addRule(id: string, description: string, statement: string) {
-    // tslint:disable-next-line:prefer-const
-    let rule = {
-      description: description,
-      statement: statement
-    };
+    if (id === 'perseo-fe') {
+      const rule = {
+        description: description,
+        statement: statement,
+        action: {
+          type: actionType,
+          parameters: {
+            name: actionName,
+            value: actionValue,
+            type: typeValue
+          }
+        }
+      };
 
-    this.ruleService.addRule(id, rule);
-    console.log(rule);
+      this.ruleService.addRule(id, rule);
+      console.log(rule);
+
+    } else {
+      const rule = {
+        description: description,
+        statement: statement
+      };
+
+      this.ruleService.addRule(id, rule);
+    }
   }
 
   getEngines(): void {
     this.ruleService.getEngines().subscribe(engines => {
-      console.log('u add-rule');
       this.engines = engines;
     });
   }
-
 
   goBack(): void {
     this.location.back();

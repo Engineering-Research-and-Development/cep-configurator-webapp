@@ -2,20 +2,26 @@
   <h3>Rule ID: {{ rule.ruleId }}</h3><hr>
   <p><span >Rule description:</span> &nbsp; {{ rule.description }}</p>
   <p><span >Rule statement:</span> &nbsp; {{ rule.statement }}</p>
+  <p><span>Rule action:</span> &nbsp; {{ rule.action }} </p>
 </div><br>
 
 <h4>Change rule details</h4>
 <hr>
 <div *ngIf='rule' class="row">
-  <div class="col-sm">
-    <label >Description</label>
+  <div class="col-sm-12 col-lg-6">
+    <h5 >Description</h5>
     <input name="des" type="text"  [(ngModel)]="rule.description">
   </div>
-  <div class="col-sm">
-    <label class="align-top">Statement</label>
-    <textarea [(ngModel)]="rule.statement" cols="50" rows="10"></textarea>
+
+  <div class="col-sm-12 col-lg-6">
+    <h5 class="align-top">Statement</h5>
+    <textarea [(ngModel)]="rule.statement" cols="50" rows="7"></textarea>
   </div>
 
-</div>
-<button (click)="saveChange(rule.ruleId, rule.description, rule.statement)" class="btn btn-primary">Save</button>
+  <div class="col-sm-12">
+    <h5>Action</h5>
+    <textarea [(ngModel)]="rule.action" cols="50" rows="7"></textarea>
+  </div>
+</div><br>
+<button (click)="updateRule(rule.ruleId, rule.description, rule.statement, rule.action)" class="btn btn-primary">Save</button>
 <button (click)="goBack()" class="btn btn-secondary">Back</button>

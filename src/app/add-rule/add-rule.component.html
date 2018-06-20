@@ -2,10 +2,11 @@
   <h2>New rule definition</h2>
   <hr>
   <form action="#">
-  <select  name="engines" #eng class="float-right" (change)="act">
-    <option value="0">pick engine</option>
-    <option *ngFor="let engine of engines" value='{{engine.engineId}}'>{{ engine.engineId }}</option>
-  </select>
+    <select name="engines" #eng class="float-right" (change)="act">
+      <option value="0">pick engine</option>
+      <option *ngFor="let engine of engines" value='{{engine.engineId}}'>{{ engine.engineId }}</option>
+    </select>
+
     <div class="form-group">
       <label for="description" class="col-form-label-lg">Description</label>
       <textarea name="description" (ngModel)="description" #description class="form-control" cols="30" rows="6"></textarea>
@@ -13,25 +14,46 @@
 
     <div class="form-group">
       <label for="statement" class="col-form-label-lg">Statement</label>
-      <textarea name="statement" (ngModel)="statement" #statement class="form-control"  cols="30" rows="6"></textarea>
+      <textarea name="statement" (ngModel)="statement" #statement class="form-control" cols="30" rows="6"></textarea>
     </div>
 
-    <div class="form-group" #act *ngIf="eng.value==='perseo-fe'">
-      <label for="action">Action</label><br>
-        Type: <input type="text" name="type" id="type" #type /> <br>
-        Parameters:  <br>
-        <input type="text" name="name" #name placeholder="name"/> <br>
-        Value: &nbsp; <input type="radio" name="value" value="true"> true &nbsp; <input type="radio" name="value" value="false"> false <br>
-        <input type="text" name="type2" #type2  placeholder="type"/>
+    <div class="form-group" #act [hidden]="eng.value!='perseo-fe'">
+      <label>Action</label>
+      <br> Type:
+      <input type="text" name="type" (ngModel)="actionType" #actionType />
+      <br><br> Parameters:
+      <br>
+      <input type="text" name="name" placeholder="name" (ngModel)="actionName" #actionName />
+      <br> Value:
+      <select #actionValue (ngModel)="actionValue">
+        <option value="true">true</option>
+        <option value="false">false</option>
+      </select>
+      <br>
+      <input type="text" name="type2" (ngModel)="typeValue" #typeValue placeholder="type" />
     </div>
 
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="enable">
       <label for="enable" class="form-check-label">Enable</label>
-    </div><br>
+    </div>
+    <br>
 
-    <button class="btn btn-primary" (click)="addRule(eng.value, description.value, statement.value)">Add </button> &nbsp;
+    <button class="btn btn-primary"
+      (click)="addRule(
+        eng.value,
+        description.value,
+        statement.value,
+        actionType.value,
+        actionName.value,
+        actionValue.value,
+        typeValue.value
+      )"
+    >
+      Add
+    </button> &nbsp;
     <button class="btn btn-secondary" (click)="goBack()">Back</button>
   </form>
 
 </div>
+

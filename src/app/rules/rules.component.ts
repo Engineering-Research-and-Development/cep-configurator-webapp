@@ -12,19 +12,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RulesComponent implements OnInit {
   rules = [];
+  engine = {};
 
   constructor(private route: ActivatedRoute, private ruleService: RuleService, private location: Location, private http: Http) {}
 
   ngOnInit() {
     this.getEngineRules();
+    // this.getEngine(name);
   }
 
-  getEngines(): void {
-    this.ruleService.getEngines().subscribe(rules => {
-      this.rules = rules;
-      console.log('njanja ' + rules);
-    });
-  }
+
 
   getRule(name: string): void {
     // tslint:disable-next-line:no-shadowed-variable

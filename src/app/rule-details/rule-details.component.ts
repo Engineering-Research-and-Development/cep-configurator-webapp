@@ -29,20 +29,38 @@ export class RuleDetailsComponent implements OnInit {
   getRuleDetails(): void {
     const idRule = this.route.snapshot.paramMap.get('ruleId');
     const idEngine = this.route.snapshot.paramMap.get('engineId');
-    console.log(idRule, idEngine);
     this.ruleService.getRuleDetails(idEngine, idRule).subscribe(rule => {
       this.rule = rule;
     });
   }
 
-  saveChange(id: string, description: string, statement: string) {
+  updateRule(
+    id: string,
+    description: string,
+    statement: string,
+    action: string,
+  ) {
+    console.log(action);
     const engineId = this.route.snapshot.paramMap.get('engineId');
-    const url = `http://localhost:8091/engines/${engineId}/rules/${id}`;
-
-      this.http.put(url, {'description': description, 'statement': statement})
-      .subscribe(res => console.log('saved'));
-
+    if (engineId === 'perseo-fe') {
+      const rule = {
+        id: id,
+        description: description,
+        statement: statement,
+        action: JSON.parse(action)
+      };
+      this.ruleService.updateRule(engineId, rule);
+      console.log(engineId);
+    } else {
+      const rule = {
+        id: id,
+        description: description,
+        statement: statement
+      };
+      console.log(engineId);
+      this.ruleService.updateRule(engineId, rule);
     }
+  }
 
 
   goBack(): void {
