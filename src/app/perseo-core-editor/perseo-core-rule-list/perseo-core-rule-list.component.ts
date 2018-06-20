@@ -6,6 +6,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CepRuleService } from 'app/cep-rule/cep-rule.service';
 
 @Component({
@@ -33,13 +34,15 @@ export class PerseoCoreRuleListComponent implements OnInit, OnChanges {
   }
 
   private updateRulesList() {
-    this.service.getRules(this.engineId).subscribe(
-      (data) => {this.rules = data}
-    );
+    var subscription: Subscription = this.service.
+      getRules(this.engineId)
+      .subscribe({
+        next: (data) => {this.rules = data},
+        complete: () => { subscription.unsubscribe() }
+      });
   }
 
   triggerSelf() {
-    console.log('triggered' + this.trigger);
     this.trigger = !this.trigger;
     this.triggerChange.emit(this.trigger);
   }
