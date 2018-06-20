@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms/';
 import { HttpClientModule } from '@angular/common/http';
-import { JsonpModule } from '@angular/http';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -18,8 +17,6 @@ import { CepWebAppModule } from './cep-web-app/cep-web-app.module';
     FormsModule,
     HttpClientModule,
     HttpModule,
-    JsonpModule,
-
     CepWebAppModule
   ],
   providers: [
