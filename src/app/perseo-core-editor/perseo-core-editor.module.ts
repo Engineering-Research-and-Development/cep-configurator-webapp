@@ -6,7 +6,8 @@ import { CepEngineEditorCommonsModule } from 'app/cep-engine-editor-commons/cep-
 import {
   MatInputModule,
   MatExpansionModule,
-  MatButtonModule
+  MatButtonModule,
+  MatCardModule
 } from '@angular/material';
 
 import { PerseoCoreEditorComponent } from './perseo-core-editor.component';
@@ -27,6 +28,7 @@ import { PerseoCoreRuleEditorComponent } from './perseo-core-rule-editor/perseo-
     MatInputModule,
     MatExpansionModule,
     MatButtonModule,
+    MatCardModule,
     CepEngineEditorCommonsModule,
     CepRuleModule
   ],

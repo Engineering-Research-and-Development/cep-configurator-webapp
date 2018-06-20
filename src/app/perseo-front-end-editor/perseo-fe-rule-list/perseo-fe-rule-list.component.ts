@@ -7,6 +7,7 @@ import {
   EventEmitter
 } from '@angular/core';
 import { CepRuleService } from 'app/cep-rule/cep-rule.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'perseo-fe-rule-list',
@@ -33,9 +34,12 @@ export class PerseoFeRuleListComponent implements OnInit, OnChanges {
   }
 
   private updateRulesList() {
-    this.service.getRules(this.engineId).subscribe(
-      (data) => {this.rules = data}
-    );
+    var subscription: Subscription = this.service
+      .getRules(this.engineId)
+      .subscribe({
+        next: (data) => {this.rules = data},
+        complete: () => { subscription.unsubscribe() }
+      });
   }
 
   triggerSelf() {

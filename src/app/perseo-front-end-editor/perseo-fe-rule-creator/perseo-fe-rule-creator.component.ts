@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { CepRuleService } from 'app/cep-rule/cep-rule.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'perseo-fe-rule-creator',
@@ -41,10 +42,13 @@ export class PerseoFeRuleCreatorComponent implements OnInit {
   }
 
   submit() {
-    this.service
+    var subscription: Subscription = this.service
       .createRule(this.engineId, this.perseoFERule)
-      .subscribe( () => {
-        this.creationEvent.emit(true);
+      .subscribe({
+        next: () => {
+          this.creationEvent.emit(true);
+        },
+        complete: () => { subscription.unsubscribe() }
       });
   }
 

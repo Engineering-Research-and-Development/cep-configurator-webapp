@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CepRuleService } from 'app/cep-rule/cep-rule.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'perseo-fe-rule-editor',
@@ -40,22 +41,32 @@ export class PerseoFeRuleEditorComponent implements OnInit {
   }
 
   update() {
-    this.service.updateRule(
-      this.rule.owner,
-      this.rule.ruleId,
-      this.modifiedRule
-    ).subscribe(() => {
-      this.updateEvent.emit(true);
-    });
+    var subscription: Subscription = this.service
+      .updateRule(
+        this.rule.owner,
+        this.rule.ruleId,
+        this.modifiedRule
+      )
+      .subscribe({
+        next: () => {
+          this.updateEvent.emit(true);
+        },
+        complete: () => { subscription.unsubscribe() }
+      });
   }
 
   delete() {
-    this.service.deleteRule(
-      this.rule.owner,
-      this.rule.ruleId,
-    ).subscribe( () => {
-      this.deletionEvent.emit(true);
-    });
+    var subscription: Subscription = this.service
+      .deleteRule(
+        this.rule.owner,
+        this.rule.ruleId,
+      )
+      .subscribe({
+        next: () => {
+          this.deletionEvent.emit(true);
+        },
+        complete: () => { subscription.unsubscribe() }
+      });
   }
 
 }

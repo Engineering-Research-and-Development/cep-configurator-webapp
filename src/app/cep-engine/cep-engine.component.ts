@@ -1,7 +1,7 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { CepEngine } from './cep-engine';
 import { CepEngineService } from './cep-engine.service';
-import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'cep-engine',
@@ -17,11 +17,14 @@ export class CepEngineComponent implements OnInit {
   constructor(public service: CepEngineService) {}
 
   ngOnInit() {
-    this.service.getEngines().subscribe(
-      (engines) => {
+    var subscription: Subscription = this.service
+    .getEngines()
+    .subscribe({
+      next: (engines) => {
         this.cepEngines = engines;
-      }
-    );
+      },
+      complete: () => { subscription.unsubscribe() }
+    });
   }
 
   private triggerEngineSelection(event) {
