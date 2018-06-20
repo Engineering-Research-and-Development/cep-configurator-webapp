@@ -18,6 +18,8 @@ import { Rule } from './rule.model';
 import { EnginesComponent } from './engines/engines.component';
 import { EngineDetailsComponent } from './engine-details/engine-details.component';
 
+import { CepWebAppModule } from './cep-web-app/cep-web-app.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,9 +36,18 @@ import { EngineDetailsComponent } from './engine-details/engine-details.componen
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+
+    CepWebAppModule
   ],
-  providers: [RuleService, Rule],
+  providers: [
+    RuleService,
+    Rule,
+    {
+      provide: 'CepMiddlewareUrl',
+      useValue: "http://localhost:8091"
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
