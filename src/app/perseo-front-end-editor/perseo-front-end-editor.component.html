@@ -1,9 +1,11 @@
-<div>
+<div [@inOut]>
   <perseo-fe-rule-creator
     [engineId]="engineId"
     (creationEvent)="triggerListUpdate()"
   >
   </perseo-fe-rule-creator>
+  <cep-event [engineId]="engineId">
+  </cep-event>
   <perseo-fe-rule-list
     [engineId]="engineId"
     [(trigger)]="trigger"

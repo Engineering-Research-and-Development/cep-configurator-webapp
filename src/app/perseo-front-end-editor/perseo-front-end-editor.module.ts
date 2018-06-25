@@ -3,10 +3,12 @@ import { CommonModule } from '@angular/common';
 import { CepRuleModule } from '../cep-rule/cep-rule.module';
 import { FormsModule } from '@angular/forms';
 import { CepEngineEditorCommonsModule } from 'app/cep-engine-editor-commons/cep-engine-editor-commons.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatInputModule,
   MatExpansionModule,
-  MatButtonModule
+  MatButtonModule,
+  MatCardModule
 } from '@angular/material';
 
 import { PerseoFrontEndEditorComponent } from './perseo-front-end-editor.component';
@@ -23,10 +25,12 @@ import { PerseoFeRuleListComponent } from './perseo-fe-rule-list/perseo-fe-rule-
   ],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     FormsModule,
     MatInputModule,
     MatExpansionModule,
     MatButtonModule,
+    MatCardModule,
     CepEngineEditorCommonsModule,
     CepRuleModule
   ],

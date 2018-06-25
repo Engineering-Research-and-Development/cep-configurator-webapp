@@ -8,12 +8,9 @@ import { bounceIn } from 'ng-animate';
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('enter', [
-      transition(
-        ':enter',
-        [
+      transition(':enter', [
           useAnimation(bounceIn)
-        ]
-      )
+      ])
     ])
   ]
 })

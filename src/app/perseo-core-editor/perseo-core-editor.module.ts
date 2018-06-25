@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CepRuleModule } from '../cep-rule/cep-rule.module';
 import { FormsModule } from '@angular/forms';
 import { CepEngineEditorCommonsModule } from 'app/cep-engine-editor-commons/cep-engine-editor-commons.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatInputModule,
   MatExpansionModule,
@@ -24,6 +25,7 @@ import { PerseoCoreRuleEditorComponent } from './perseo-core-rule-editor/perseo-
   ],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     FormsModule,
     MatInputModule,
     MatExpansionModule,
