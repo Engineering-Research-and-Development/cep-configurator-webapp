@@ -4,10 +4,9 @@ import { FormsModule } from '@angular/forms/';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CepWebAppModule } from './cep-web-app/cep-web-app.module';
 
 import { AppComponent } from './app.component';
-
-import { CepWebAppModule } from './cep-web-app/cep-web-app.module';
 
 @NgModule({
   declarations: [
