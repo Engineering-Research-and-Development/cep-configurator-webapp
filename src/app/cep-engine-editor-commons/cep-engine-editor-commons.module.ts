@@ -4,10 +4,12 @@ import { FormsModule } from "@angular/forms";
 import { CepRuleModule } from 'app/cep-rule/cep-rule.module';
 
 import { StatementComponent } from './statement/statement.component';
+import { EventComponent } from './event/event.component';
 
 @NgModule({
   declarations: [
-    StatementComponent
+    StatementComponent,
+    EventComponent
   ],
   imports: [
     CommonModule,
