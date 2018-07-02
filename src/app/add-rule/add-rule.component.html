@@ -70,7 +70,7 @@
     <!-- statement -->
     <div class="form-group">
       <label for="statement" class="col-form-label-lg">Statement</label>
-      <textarea name="statement" [(ngModel)]="statementText" #statement class="form-control" cols="30" rows="6"></textarea>
+      <textarea name="statement" [(ngModel)]="statementText" #statement class="form-control" cols="30" rows="6" (focus)="fokus(statement)" (blur)="fokus(statement)"></textarea>
     </div>
 
     <!-- action -->

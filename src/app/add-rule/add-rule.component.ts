@@ -15,7 +15,11 @@ export class AddRuleComponent implements OnInit {
   engines = [];
   selectedEngineId;
   selectedEngine;
-  statementText;
+  statementText = '';
+  sel = document.getSelection();
+  saved;
+  startPos;
+  endPos;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +31,6 @@ export class AddRuleComponent implements OnInit {
   ngOnInit() {
     this.getEngines();
   }
-
 
 
   onEngChange() {
@@ -82,9 +85,18 @@ export class AddRuleComponent implements OnInit {
     });
   }
 
+  fokus(field) {
+    // tslint:disable-next-line:triple-equals
+    if (field.selectionStart || field.selectionStart == '0') {
+      this.startPos = field.selectionStart;
+      this.endPos = field.selectionEnd;
+    }
+  }
 
-  select1(arg) {
-    this.statementText += arg.target.value;
+
+  select1(insertText) {
+    const value = this.statementText;
+    this.statementText = value.slice(0, this.startPos) + insertText.target.value + value.slice(this.endPos);
   }
 
   goBack(): void {
