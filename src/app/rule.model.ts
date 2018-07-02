@@ -1,24 +1,23 @@
-// export class Rule{
-//     id: string;
-//     content: string;
-// }
-
-import { Injectable } from "@angular/core";
-import { RuleService } from "./rule.service";
-
-@Injectable()
 export class Rule {
-  rules = [];
+    id: string;
+    description: string;
+    statement: string;
+}
 
-  constructor(private ruleService: RuleService) {
-     this.initializerules();
-  }
+// import { Injectable } from '@angular/core';
+// import { RuleService } from './rule.service';
 
-  initializerules() {
-   
-    this.ruleService.getRules().subscribe(rules => {
-          this.rules = rules;
-    });
-  }
-  
-} 
+// @Injectable()
+// export class Rule {
+//   rules = [];
+
+//   constructor(private ruleService: RuleService) {
+//     this.initializerules();
+//   }
+
+//   initializerules() {
+//     this.ruleService.getRules().subscribe(rules => {
+//       this.rules = rules;
+//     });
+//   }
+// }

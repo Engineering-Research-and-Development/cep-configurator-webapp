@@ -1,7 +1,7 @@
-<div>
+<!-- <div>
   <a class=" btn btn-secondary" routerLink="/add-rule/">add rule</a>
 
-</div>
+</div> -->
 <br>
 <table class="table table-striped table-dark" id="ruleTable">
   <thead>
@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let rule of rules" >
+    <tr *ngFor="let rule of rules | orderBy: order: false: 'case-insensitive'" >
       <td><span >{{ rule.ruleId }}</span></td>
       <td >
         <a  routerLink="/engines/{{rule.owner}}/rules/{{rule.ruleId}}" class="btn btn-info">View details</a>

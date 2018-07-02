@@ -2,22 +2,79 @@
   <h2>New rule definition</h2>
   <hr>
   <form action="#">
-    <select name="engines" #eng class="float-right" (change)="act">
-      <option value="0">pick engine</option>
-      <option *ngFor="let engine of engines" value='{{engine.engineId}}'>{{ engine.engineId }}</option>
-    </select>
+    <!-- engine picking -->
+    <div class="form-group" class="float-right">
+        <label for="engines" >Pick engine</label> &nbsp;
+        <select id="engines" #eng class="float-right" (change)="onEngChange($event)" [(ngModel)]="selectedEngineId" name="engine">
+          <!-- <option [selected]="true">pick engine</option> -->
+          <option *ngFor="let engine of engines" value='{{ engine.engineId }}' >{{ engine.engineId }}</option>
+        </select>
+    </div>
 
+    <div class="btn-group">
+      <select name="event"  #event (change)="select1($event)" class="btn btn-info">
+        <option value="">-Pick event-</option>
+        <option value="StartProductionEvent">StartProductionEvent</option>
+        <option value="OperationProductionEvent">OperationProductionEvent</option>
+        <option value="EndProductionEvent">EndProductionEvent</option>
+        <option value="AcceptOrderEvent">AcceptOrderEvent</option>
+        <option value="ModifyOrderEvent">ModifyOrderEvent</option>
+      </select> &nbsp;
+
+      <select name="timeAtom"  #timeAtom (change)="select1($event)" class="btn btn-info">
+        <option value="">-Pick interval-</option>
+        <option value="timer:interval">timer:interval</option>
+        <option value="timer:at">timer:at</option>
+      </select> &nbsp;
+
+      <select name="operator"  #operator (change)="select1($event)" class="btn btn-info">
+        <option value="">-Pick operator-</option>
+        <option value="every">every</option>
+        <option value="every-distinct">every-distinct</option>
+        <option value="repeat">repeat</option>
+        <option value="until">until</option>
+      </select> &nbsp;
+
+      <select name="timeValue" #timeValue (change)="select1($event)" class="btn btn-info">
+        <option value="">-Pick time value-</option>
+        <option value="seconds">seconds</option>
+        <option value="minutes">minutes</option>
+        <option value="hours">hours</option>
+        <option value="days">days</option>
+        <option value="weeks">weeks</option>
+      </select> &nbsp;
+
+      <select name="patternGuard" #patternGuard (change)="select1($event)" class="btn btn-info">
+        <option value="">-Pick pattern guard-</option>
+        <option value="timer:within">timer:within</option>
+        <option value="timer:withinmax">timer:withinmax</option>
+        <option value="while">while</option>
+      </select> &nbsp;
+
+      <select name="timeView" #timeView (change)="select1($event)" class="btn btn-info">
+        <option value="">-Pick time view-</option>
+        <option value=".win:time">.win:time</option>
+        <option value=".win:time_batch">.win:time_batch</option>
+        <option value=".win:length">.win:length</option>
+      </select>
+    </div>
+
+
+
+    <!-- description -->
     <div class="form-group">
       <label for="description" class="col-form-label-lg">Description</label>
       <textarea name="description" (ngModel)="description" #description class="form-control" cols="30" rows="6"></textarea>
     </div>
 
+    <!-- statement -->
     <div class="form-group">
       <label for="statement" class="col-form-label-lg">Statement</label>
-      <textarea name="statement" (ngModel)="statement" #statement class="form-control" cols="30" rows="6"></textarea>
+      <textarea name="statement" [(ngModel)]="statementText" #statement class="form-control" cols="30" rows="6"></textarea>
     </div>
 
-    <div class="form-group" #act [hidden]="eng.value!='perseo-fe'">
+    <!-- action -->
+    <div class="form-group" #act [hidden]="selectedEngine?.engineType!='PerseoFrontEnd'">
       <label>Action</label>
       <br> Type:
       <input type="text" name="type" (ngModel)="actionType" #actionType />
@@ -34,14 +91,15 @@
     </div>
 
     <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="enable">
-      <label for="enable" class="form-check-label">Enable</label>
+      <!-- <input type="checkbox" class="form-check-input" id="enable"> -->
+      <!-- <label for="enable" class="form-check-label">Enable</label> -->
     </div>
     <br>
 
     <button class="btn btn-primary"
       (click)="addRule(
         eng.value,
+        selectedEngine.engineType,
         description.value,
         statement.value,
         actionType.value,
@@ -52,7 +110,9 @@
     >
       Add
     </button> &nbsp;
+    <input type="reset" class="btn btn-danger" /> &nbsp;
     <button class="btn btn-secondary" (click)="goBack()">Back</button>
+
   </form>
 
 </div>

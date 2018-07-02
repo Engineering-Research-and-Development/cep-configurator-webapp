@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 
 import { RuleService } from '../rule.service';
+import { createAttribute } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-add-rule',
@@ -12,8 +13,9 @@ import { RuleService } from '../rule.service';
 })
 export class AddRuleComponent implements OnInit {
   engines = [];
-
-  // rule: Rule;
+  selectedEngineId;
+  selectedEngine;
+  statementText;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,8 +28,19 @@ export class AddRuleComponent implements OnInit {
     this.getEngines();
   }
 
+
+
+  onEngChange() {
+    this.selectedEngine = (this.engines.filter(
+      (engine) => {
+        return engine.engineId === this.selectedEngineId;
+      }
+    )[0]);
+  }
+
   addRule(
     id: string,
+    engineType: string,
     description: string,
     statement: string,
     actionType: string,
@@ -36,7 +49,7 @@ export class AddRuleComponent implements OnInit {
     typeValue: string
   ) {
 
-    if (id === 'perseo-fe') {
+    if (engineType === 'PerseoFrontEnd') {
       const rule = {
         description: description,
         statement: statement,
@@ -67,6 +80,11 @@ export class AddRuleComponent implements OnInit {
     this.ruleService.getEngines().subscribe(engines => {
       this.engines = engines;
     });
+  }
+
+
+  select1(arg) {
+    this.statementText += arg.target.value;
   }
 
   goBack(): void {

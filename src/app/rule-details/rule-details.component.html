@@ -2,7 +2,7 @@
   <h3>Rule ID: {{ rule.ruleId }}</h3><hr>
   <p><span >Rule description:</span> &nbsp; {{ rule.description }}</p>
   <p><span >Rule statement:</span> &nbsp; {{ rule.statement }}</p>
-  <p><span>Rule action:</span> &nbsp; {{ rule.action }} </p>
+ <div *ngIf='engine?.engineType=="PerseoFrontEnd"'><p><span>Rule action:</span> &nbsp; {{ rule.action }} </p></div>
 </div><br>
 
 <h4>Change rule details</h4>
@@ -18,7 +18,7 @@
     <textarea [(ngModel)]="rule.statement" cols="50" rows="7"></textarea>
   </div>
 
-  <div class="col-sm-12">
+  <div class="col-sm-12" *ngIf='engine?.engineType=="PerseoFrontEnd"'>
     <h5>Action</h5>
     <textarea [(ngModel)]="rule.action" cols="50" rows="7"></textarea>
   </div>

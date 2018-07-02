@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class RulesComponent implements OnInit {
   rules = [];
   engine = {};
+  order = 'rule.ruleId';
 
   constructor(private route: ActivatedRoute, private ruleService: RuleService, private location: Location, private http: Http) {}
 
@@ -34,8 +35,9 @@ export class RulesComponent implements OnInit {
   }
 
   getEngineRules(): any {
+
     const id = this.route.snapshot.paramMap.get('engineId');
-    this.ruleService.getEngineRules(id).subscribe(res => { this.rules = res; console.log(res); });
+    this.ruleService.getEngineRules(id).subscribe(res => { this.rules = res; } );
   }
 
   deleteRule(engineId: string, ruleId: string) {
@@ -49,5 +51,18 @@ export class RulesComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  test(res) {
+    res.forEach(element => {
+      console.log('Uzimam element');
+      console.log(element);
+      console.log('Pocinjem pisanje u niz');
+      this.rules.push(element);
+      console.log('Zavrsio');
+      this.rules.forEach(element2 => {
+        console.log(element2);
+      });
+    });
   }
 }

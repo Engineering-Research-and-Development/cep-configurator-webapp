@@ -20,10 +20,12 @@ export class RuleDetailsComponent implements OnInit {
     private http: Http
   ) {}
 
-   rule: any;
+  rule: any;
+  engine: any;
 
   ngOnInit(): void {
     this.getRuleDetails();
+    this.getEngineDetails();
   }
 
   getRuleDetails(): void {
@@ -42,7 +44,7 @@ export class RuleDetailsComponent implements OnInit {
   ) {
     console.log(action);
     const engineId = this.route.snapshot.paramMap.get('engineId');
-    if (engineId === 'perseo-fe') {
+    if (this.engine.engineType === 'PerseoFontEnd') {
       const rule = {
         id: id,
         description: description,
@@ -62,6 +64,12 @@ export class RuleDetailsComponent implements OnInit {
     }
   }
 
+  getEngineDetails(): void {
+    const id = this.route.snapshot.paramMap.get('engineId');
+    this.ruleService.getEngineDetails(id).subscribe(engine => {
+      this.engine = engine;
+    });
+  }
 
   goBack(): void {
     this.location.back();

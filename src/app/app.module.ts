@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms/';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
+import { OrderModule } from 'ngx-order-pipe';
 
 import { AppComponent } from './app.component';
 import { AddRuleComponent } from './add-rule/add-rule.component';
@@ -30,7 +31,8 @@ import { EngineDetailsComponent } from './engine-details/engine-details.componen
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpModule
+    HttpModule,
+    OrderModule
   ],
   providers: [RuleService, Rule],
   bootstrap: [AppComponent]
