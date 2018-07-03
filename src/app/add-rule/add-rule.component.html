@@ -110,7 +110,7 @@
     >
       Add
     </button> &nbsp;
-    <input type="reset" class="btn btn-danger" /> &nbsp;
+    <input type="button" class="btn btn-danger" (click)="[description.value='', statement.value='']" value="Reset"/> &nbsp;
     <button class="btn btn-secondary" (click)="goBack()">Back</button>
 
   </form>

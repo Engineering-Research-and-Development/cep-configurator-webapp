@@ -16,8 +16,6 @@ export class AddRuleComponent implements OnInit {
   selectedEngineId;
   selectedEngine;
   statementText = '';
-  sel = document.getSelection();
-  saved;
   startPos;
   endPos;
 
@@ -98,6 +96,7 @@ export class AddRuleComponent implements OnInit {
     const value = this.statementText;
     this.statementText = value.slice(0, this.startPos) + insertText.target.value + value.slice(this.endPos);
   }
+
 
   goBack(): void {
     this.location.back();
