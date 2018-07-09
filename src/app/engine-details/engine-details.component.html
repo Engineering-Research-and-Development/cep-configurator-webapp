@@ -1,6 +1,25 @@
 <div *ngIf="engine" >
     <h3>Engine ID: {{ engine.engineId }}</h3><hr>
-    <p><span >Engine type:</span> &nbsp; {{ engine.engineType }}</p>
     <p><span >Engine ID:</span> &nbsp; {{ engine.engineId }}</p>
+    <p><span >Engine type:</span> &nbsp; {{ engine.engineType }}</p>
+    <p><span >Engine URL:</span> &nbsp; {{ engine.engineURL }}</p>
+  <br>
+</div>
+<div *ngIf="engine">
+  <h4>Change engine details</h4>
+  <hr>
+  <div  class="row">
+    <div class="col-sm-12 col-lg-6">
+      <label>Engine type</label>
+      <input name="des" type="text"  [(ngModel)]="engine.engineType" class="form-control">
+    </div>
+
+    <div class="col-sm-12 col-lg-6">
+      <label>Engine URL</label>
+      <input type="text" [(ngModel)]="engine.engineURL" class="form-control" />
+    </div>
+
   </div><br>
+  <button (click)="updateEngine(engine.engineId, engine.engineType, engine.engineURL)" class="btn btn-primary">Save</button>
   <button (click)="goBack()" class="btn btn-secondary">Back</button>
+</div>

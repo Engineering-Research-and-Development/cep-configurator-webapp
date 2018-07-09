@@ -25,4 +25,15 @@ export class EnginesComponent implements OnInit {
     this.getEngines();
   }
 
+  deleteEngine(engineId) {
+    this.ruleService.deleteEngine(engineId);
+    // const index = this.engines.findIndex(compare);
+    const index = this.engines.findIndex(compare);
+    console.log(engineId, index);
+    this.engines.splice(index, 1);
+
+    function compare(element) {
+      return element.engineId === engineId;
+    }
+  }
 }

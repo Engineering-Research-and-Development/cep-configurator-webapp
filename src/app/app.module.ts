@@ -15,6 +15,7 @@ import { RulesComponent } from './rules/rules.component';
 import { Rule } from './rule.model';
 import { EnginesComponent } from './engines/engines.component';
 import { EngineDetailsComponent } from './engine-details/engine-details.component';
+import { AddEngineComponent } from './add-engine/add-engine.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { EngineDetailsComponent } from './engine-details/engine-details.componen
     RuleDetailsComponent,
     RulesComponent,
     EnginesComponent,
-    EngineDetailsComponent
+    EngineDetailsComponent,
+    AddEngineComponent
   ],
   imports: [
     BrowserModule,

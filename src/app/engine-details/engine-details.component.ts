@@ -32,6 +32,14 @@ export class EngineDetailsComponent implements OnInit {
     });
   }
 
+  updateEngine(id, type, url) {
+    const data = {
+      engineId: id,
+      engineType: type,
+      hostUrl: url
+    };
+    this.ruleService.updateEngine(data);
+  }
   goBack(): void {
     this.location.back();
   }

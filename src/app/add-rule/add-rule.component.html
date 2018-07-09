@@ -11,7 +11,7 @@
         </select>
     </div>
 
-    <div class="btn-group">
+    <div class="btn-group" #dropdowns [hidden]="selectedEngine?.engineType!='PerseoFrontEnd' || 'PerseoCore'">
       <select name="event"  #event (change)="select1($event)" class="btn btn-info">
         <option value="">-Pick event-</option>
         <option value="StartProductionEvent">StartProductionEvent</option>

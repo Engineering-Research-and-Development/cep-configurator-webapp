@@ -8,6 +8,7 @@ import { AddRuleComponent } from './add-rule/add-rule.component';
 import { EditRuleComponent } from './edit-rule/edit-rule.component';
 import { EnginesComponent } from './engines/engines.component';
 import { EngineDetailsComponent } from './engine-details/engine-details.component';
+import { AddEngineComponent } from './add-engine/add-engine.component';
 
 const ROUTES: Routes = [
   {path: 'engines', component: EnginesComponent},
@@ -16,7 +17,8 @@ const ROUTES: Routes = [
   {path: 'engines/:engineId/rules', component: RulesComponent},
   {path: 'engines/:engineId/rules/:ruleId', component: RuleDetailsComponent},
   {path: 'add-rule', component: AddRuleComponent},
-  {path: 'edit-rule/:id', component: EditRuleComponent}
+  {path: 'edit-rule/:id', component: EditRuleComponent},
+  {path: 'add-engine', component: AddEngineComponent}
 ];
 
 @NgModule({

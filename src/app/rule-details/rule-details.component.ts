@@ -42,7 +42,6 @@ export class RuleDetailsComponent implements OnInit {
     statement: string,
     action: string,
   ) {
-    console.log(action);
     const engineId = this.route.snapshot.paramMap.get('engineId');
     if (this.engine.engineType === 'PerseoFontEnd') {
       const rule = {
@@ -59,7 +58,6 @@ export class RuleDetailsComponent implements OnInit {
         description: description,
         statement: statement
       };
-      console.log(engineId);
       this.ruleService.updateRule(engineId, rule);
     }
   }
