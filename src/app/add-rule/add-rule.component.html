@@ -3,15 +3,20 @@
   <hr>
   <form action="#">
     <!-- engine picking -->
-    <div class="form-group" class="float-right">
-        <label for="engines" >Pick engine</label> &nbsp;
-        <select id="engines" #eng class="float-right" (change)="onEngChange($event)" [(ngModel)]="selectedEngineId" name="engine">
-          <!-- <option [selected]="true">pick engine</option> -->
+    <!-- <div class="form-group" class="float-right">
+        <label for="engines" >Picked engine</label> &nbsp;
+        <select id="engines" #eng class="float-right" (change)="onEngChange($event)" [(ngModel)]="selectedEngineId" name="engine" disabled>
           <option *ngFor="let engine of engines" value='{{ engine.engineId }}' >{{ engine.engineId }}</option>
         </select>
+    </div> -->
+    <div >
+      picked engine: <span name="engId" #engId>{{ storedEngineId }}</span>
+      <span name="engType" #engType hidden>{{ storedEngine }}</span>
     </div>
-
-    <div class="btn-group" #dropdowns [hidden]="selectedEngine?.engineType!='PerseoFrontEnd' || 'PerseoCore'">
+    <br>
+    <!-- dropdowns -->
+    <!-- <div class="btn-group" #dropdowns [hidden]="selectedEngine?.engineType!='PerseoFrontEnd' || 'PerseoCore'"> -->
+    <div class="btn-group" #dropdowns *ngIf="selectedEngine == 'PerseoFrontEnd' || 'PerseoCore'">
       <select name="event"  #event (change)="select1($event)" class="btn btn-info">
         <option value="">-Pick event-</option>
         <option value="StartProductionEvent">StartProductionEvent</option>
@@ -59,7 +64,11 @@
       </select>
     </div>
 
-
+    <!-- rule name -->
+    <div class="form-group" id="rName" style="margin-top: 30px;" >
+      <label for="ruleName" class="col-form-label-lg">Rule name</label>
+      <input type="text" name="ruleName" #ruleName class="form-control" />
+    </div>
 
     <!-- description -->
     <div class="form-group">
@@ -67,53 +76,55 @@
       <textarea name="description" (ngModel)="description" #description class="form-control" cols="30" rows="6"></textarea>
     </div>
 
-    <!-- statement -->
+    <!-- text  -->
     <div class="form-group">
-      <label for="statement" class="col-form-label-lg">Statement</label>
-      <textarea name="statement" [(ngModel)]="statementText" #statement class="form-control" cols="30" rows="6" (focus)="fokus(statement)" (blur)="fokus(statement)"></textarea>
+      <label for="text" class="col-form-label-lg">Text</label>
+      <textarea name="text" [(ngModel)]="ruleText" #text class="form-control" cols="30" rows="6" (focus)="fokus(text)" (blur)="fokus(text)"></textarea>
     </div>
 
     <!-- action -->
-    <div class="form-group" #act [hidden]="selectedEngine?.engineType!='PerseoFrontEnd'">
+    <!-- <div class="form-group" #act [hidden]="storedEngine!='Perseo'">
       <label>Action</label>
       <br> Type:
       <input type="text" name="type" (ngModel)="actionType" #actionType />
       <br><br> Parameters:
-      <br>
-      <input type="text" name="name" placeholder="name" (ngModel)="actionName" #actionName />
-      <br> Value:
+      <br><br>
+      <input type="text" name="name" placeholder="rule name" (ngModel)="actionName" #actionName />
+      <br><br> Value:
       <select #actionValue (ngModel)="actionValue">
         <option value="true">true</option>
         <option value="false">false</option>
       </select>
-      <br>
-      <input type="text" name="type2" (ngModel)="typeValue" #typeValue placeholder="type" />
+      <br><br>
+      <input type="text" name="type2" (ngModel)="typeValue" #typeValue placeholder="rule type" />
+    </div> -->
+    <div class="form-group">
+      <label for="action" class="col-form-label-lg">Action</label>
+      <textarea #action name="action" [hidden]="storedEngine!='Perseo'" class="form-control" rows="6"></textarea>
     </div>
 
+
     <div class="form-check">
-      <!-- <input type="checkbox" class="form-check-input" id="enable"> -->
-      <!-- <label for="enable" class="form-check-label">Enable</label> -->
+      <input type="checkbox" #enable class="form-check-input" id="enable" (change)="test($event.target.checked)">
+      <label for="enable" class="form-check-label">Enable</label>
     </div>
     <br>
 
     <button class="btn btn-primary"
       (click)="addRule(
-        eng.value,
-        selectedEngine.engineType,
+        engId.innerText,
+        engType.innerText,
         description.value,
-        statement.value,
-        actionType.value,
-        actionName.value,
-        actionValue.value,
-        typeValue.value
+        text.value,
+        action.value,
+        ruleName.value
       )"
     >
       Add
     </button> &nbsp;
-    <input type="button" class="btn btn-danger" (click)="[description.value='', statement.value='']" value="Reset"/> &nbsp;
+    <input type="button" class="btn btn-danger" (click)="[description.value='', text.value='', action.value='']" value="Reset"/> &nbsp;
     <button class="btn btn-secondary" (click)="goBack()">Back</button>
 
   </form>
 
 </div>
-

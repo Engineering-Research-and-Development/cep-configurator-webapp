@@ -3,8 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { RuleService } from '../rule.service';
-import { identifierModuleUrl } from '@angular/compiler';
-import { EnginesComponent } from '../engines/engines.component';
 
 @Component({
   selector: 'app-engine-details',
@@ -23,6 +21,7 @@ export class EngineDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEngineDetails();
+    console.log(this.engine);
   }
 
   getEngineDetails(): void {
@@ -40,6 +39,7 @@ export class EngineDetailsComponent implements OnInit {
     };
     this.ruleService.updateEngine(data);
   }
+
   goBack(): void {
     this.location.back();
   }

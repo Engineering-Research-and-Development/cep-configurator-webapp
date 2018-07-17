@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 
 import { RuleService } from '../rule.service';
-import { createAttribute } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-add-rule',
@@ -15,9 +14,13 @@ export class AddRuleComponent implements OnInit {
   engines = [];
   selectedEngineId;
   selectedEngine;
-  statementText = '';
+  ruleText = '';
   startPos;
   endPos;
+  storage = window.localStorage;
+  storedEngine = this.storage.engineType;
+  storedEngineId =  this.storage.engineID;
+  enabled = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +31,12 @@ export class AddRuleComponent implements OnInit {
 
   ngOnInit() {
     this.getEngines();
+    console.log(this.storedEngine);
+    console.log(this.storedEngineId);
   }
+
+
+  test = (x) => { this.enabled = x; };
 
 
   onEngChange() {
@@ -43,26 +51,19 @@ export class AddRuleComponent implements OnInit {
     id: string,
     engineType: string,
     description: string,
-    statement: string,
-    actionType: string,
-    actionName: string,
-    actionValue: boolean,
-    typeValue: string
+    text: string,
+    action: string,
+    ruleName: string
   ) {
 
-    if (engineType === 'PerseoFrontEnd') {
+    if (engineType === 'Perseo') {
       const rule = {
         description: description,
-        statement: statement,
-        action: {
-          type: actionType,
-          parameters: {
-            name: actionName,
-            value: actionValue,
-            type: typeValue
-          }
-        }
-      };
+        text: text,
+        action: JSON.parse(action),
+        name: ruleName,
+        active: this.enabled
+        };
 
       this.ruleService.addRule(id, rule);
       console.log(rule);
@@ -70,7 +71,7 @@ export class AddRuleComponent implements OnInit {
     } else {
       const rule = {
         description: description,
-        statement: statement
+        text: text
       };
 
       this.ruleService.addRule(id, rule);
@@ -93,8 +94,8 @@ export class AddRuleComponent implements OnInit {
 
 
   select1(insertText) {
-    const value = this.statementText;
-    this.statementText = value.slice(0, this.startPos) + insertText.target.value + value.slice(this.endPos);
+    const value = this.ruleText;
+    this.ruleText = value.slice(0, this.startPos) + insertText.target.value + value.slice(this.endPos);
   }
 
 

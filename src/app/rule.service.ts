@@ -63,7 +63,12 @@ export class RuleService {
     // const engineId = this.route.snapshot.paramMap.get('engineId');
     const url = `http://localhost:8091/engines/${engineId}/rules/${data.id}`;
 
-      this.http.put(url, data).subscribe(res => console.log(res));
+      this.http.put(url, data).subscribe(res => { if (res.status === 200) {
+       console.log('Rule changed.');
+       } else {
+        console.log('Change failed.');
+       }
+    });
     }
 
 
@@ -85,7 +90,7 @@ export class RuleService {
   }
 
   updateEngine(data) {
-    const url = 'http://localhost:8091/engines';
+    const url = `http://localhost:8091/engines/${data.engineId}`;
 
     this.http.put(url, data).subscribe(res => { if (res.status === 200) {
       console.log('suxes');

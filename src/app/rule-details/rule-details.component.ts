@@ -22,6 +22,10 @@ export class RuleDetailsComponent implements OnInit {
 
   rule: any;
   engine: any;
+  active: any;
+  fromJson = (x) => JSON.stringify(x);
+  toJson = (x) => JSON.parse(x);
+
 
   ngOnInit(): void {
     this.getRuleDetails();
@@ -38,25 +42,31 @@ export class RuleDetailsComponent implements OnInit {
 
   updateRule(
     id: string,
+    name: string,
     description: string,
-    statement: string,
+    text: string,
     action: string,
+    active: boolean
   ) {
     const engineId = this.route.snapshot.paramMap.get('engineId');
-    if (this.engine.engineType === 'PerseoFontEnd') {
+    if (this.engine.engineType === 'Perseo') {
       const rule = {
         id: id,
+        name: name,
         description: description,
-        statement: statement,
-        action: JSON.parse(action)
+        text: text,
+        action: action,
+        active: active
       };
       this.ruleService.updateRule(engineId, rule);
       console.log(engineId);
     } else {
       const rule = {
         id: id,
+        name: name,
         description: description,
-        statement: statement
+        text: text,
+        active: active
       };
       this.ruleService.updateRule(engineId, rule);
     }

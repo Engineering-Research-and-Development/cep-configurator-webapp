@@ -12,17 +12,32 @@ import { RuleService } from '../rule.service';
 export class EnginesComponent implements OnInit {
 
   engines = [];
+  enginesUser = [];
+  storage = window.localStorage;
+  userType = {
+    user: 'admin'
+  };
+
 
   getEngines(): void {
-    this.ruleService.getEngines().subscribe(engines => {
-      this.engines = engines;
-    });
+    if (this.userType.user === 'admin') {
+      this.ruleService.getEngines().subscribe(engines => {
+        this.engines = engines;
+      });
+    } else if (this.userType.user === 'user') {
+     this.ruleService.getEngine(this.storage.getItem('userEngine')).subscribe(userEngine => {
+       this.engines.push(userEngine);
+        console.log(userEngine);
+     });
+    }
   }
 
   constructor(private ruleService: RuleService) { }
 
   ngOnInit() {
     this.getEngines();
+    // this.storage.clear();
+    console.log(this.storage);
   }
 
   deleteEngine(engineId) {
@@ -36,4 +51,19 @@ export class EnginesComponent implements OnInit {
       return element.engineId === engineId;
     }
   }
+
+  selectEngine(id, type) {
+    this.storage.setItem('engineID', id);
+    this.storage.setItem('engineType', type);
+    this.enginesUser = [];
+    this.engines.forEach(element => {
+       if (element.engineId === this.storage.engineID) {
+        console.log(element.engineId);
+        this.storage.setItem('userEngine', element.engineId);
+
+       }
+    });
+    console.log(this.storage);
+  }
+
 }

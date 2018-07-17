@@ -15,11 +15,11 @@
     <tr *ngFor="let rule of rules | orderBy: order: false: 'case-insensitive'" >
       <td><span >{{ rule.ruleId }}</span></td>
       <td >
-        <a  routerLink="/engines/{{rule.owner}}/rules/{{rule.ruleId}}" class="btn btn-info">View details</a>
+        <a  routerLink="/engines/{{engineId}}/rules/{{rule.ruleId}}" class="btn btn-info">View details</a>
         <span>{{rule.engineId}}</span>
       </td>
       <td>
-        <button class="btn btn-danger" (click)="deleteRule(rule.owner, rule.ruleId ); ">Delete</button>
+        <button class="btn btn-danger" (click)="deleteRule(engineId, rule.ruleId ); ">Delete</button>
       </td>
     </tr>
   </tbody>

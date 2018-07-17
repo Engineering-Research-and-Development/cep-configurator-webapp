@@ -1,6 +1,9 @@
 <div >
   <a class=" btn btn-secondary" routerLink="/add-rule/">add rule</a>
-  <a class=" btn btn-secondary" routerLink="/add-engine/">add engine</a>
+  <span *ngIf="userType.user!=='user'">
+    <a class=" btn btn-secondary" routerLink="/add-engine/" >add engine</a>
+  </span>
+
 </div>
 <br>
 <table class="table table-striped table-dark" id="ruleTable">
@@ -17,8 +20,9 @@
         <a routerLink="/engines/{{engine.engineId}}" class="btn btn-info">View details</a>
       </td>
       <td>
-        <a routerLink="/engines/{{engine.engineId}}/rules" class="btn btn-primary">View rules</a>
+        <a routerLink="/engines/{{engine.engineId}}/rules" class="btn btn-info">View rules</a>
       </td>
+      <td><button class="btn btn-primary" (click)="selectEngine(engine.engineId, engine.engineType)">Select</button></td>
       <td><button class="btn btn-danger" (click)="deleteEngine(engine.engineId)">delete</button></td>
     </tr>
   </tbody>

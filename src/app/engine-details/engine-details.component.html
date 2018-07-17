@@ -2,7 +2,7 @@
     <h3>Engine ID: {{ engine.engineId }}</h3><hr>
     <p><span >Engine ID:</span> &nbsp; {{ engine.engineId }}</p>
     <p><span >Engine type:</span> &nbsp; {{ engine.engineType }}</p>
-    <p><span >Engine URL:</span> &nbsp; {{ engine.engineURL }}</p>
+    <p><span >Engine URL:</span> &nbsp; {{ engine.hostUrl }}</p>
   <br>
 </div>
 <div *ngIf="engine">
@@ -16,10 +16,10 @@
 
     <div class="col-sm-12 col-lg-6">
       <label>Engine URL</label>
-      <input type="text" [(ngModel)]="engine.engineURL" class="form-control" />
+      <input type="text" [(ngModel)]="engine.hostUrl" class="form-control" />
     </div>
 
   </div><br>
-  <button (click)="updateEngine(engine.engineId, engine.engineType, engine.engineURL)" class="btn btn-primary">Save</button>
+  <button (click)="updateEngine(engine.engineId, engine.engineType, engine.hostUrl)" class="btn btn-primary">Save</button>
   <button (click)="goBack()" class="btn btn-secondary">Back</button>
 </div>

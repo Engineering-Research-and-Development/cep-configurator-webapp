@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RulesComponent implements OnInit {
   rules = [];
-  engine = {};
+  engineId = this.route.snapshot.paramMap.get('engineId');
   order = 'rule.ruleId';
 
   constructor(private route: ActivatedRoute, private ruleService: RuleService, private location: Location, private http: Http) {}
@@ -24,11 +24,11 @@ export class RulesComponent implements OnInit {
 
 
 
-  getRule(name: string): void {
+  getRule(id: string): void {
     // tslint:disable-next-line:no-shadowed-variable
     this.rules.forEach(element => {
       // tslint:disable-next-line:triple-equals
-      if (name == element.name) {
+      if (id == element.ruleId) {
         return element;
       }
     });
