@@ -104,4 +104,11 @@ export class RuleService {
     const url = `http://localhost:8091/engines/${id}`;
     this.http.delete(url).subscribe();
   }
+
+
+  getEventTypes(engineId) {
+    const URL = `http://localhost:8091/engines/${engineId}/event-types`;
+
+    return this.http.get(URL).map(res => res.json());
+  }
 }

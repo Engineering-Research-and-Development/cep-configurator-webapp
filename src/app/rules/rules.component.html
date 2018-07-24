@@ -7,6 +7,7 @@
   <thead>
     <tr>
       <th>Rule ID</th>
+      <th>Rule name</th>
       <th>View details</th>
       <th>Delete rule</th>
     </tr>
@@ -14,6 +15,7 @@
   <tbody>
     <tr *ngFor="let rule of rules | orderBy: order: false: 'case-insensitive'" >
       <td><span >{{ rule.ruleId }}</span></td>
+      <td><span>{{ rule.name }}</span></td>
       <td >
         <a  routerLink="/engines/{{engineId}}/rules/{{rule.ruleId}}" class="btn btn-info">View details</a>
         <span>{{rule.engineId}}</span>

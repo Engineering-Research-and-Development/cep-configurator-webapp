@@ -19,11 +19,7 @@
     <div class="btn-group" #dropdowns *ngIf="selectedEngine == 'PerseoFrontEnd' || 'PerseoCore'">
       <select name="event"  #event (change)="select1($event)" class="btn btn-info">
         <option value="">-Pick event-</option>
-        <option value="StartProductionEvent">StartProductionEvent</option>
-        <option value="OperationProductionEvent">OperationProductionEvent</option>
-        <option value="EndProductionEvent">EndProductionEvent</option>
-        <option value="AcceptOrderEvent">AcceptOrderEvent</option>
-        <option value="ModifyOrderEvent">ModifyOrderEvent</option>
+        <option *ngFor="let event of events" value="{{event}}" >{{ event }}</option>
       </select> &nbsp;
 
       <select name="timeAtom"  #timeAtom (change)="select1($event)" class="btn btn-info">

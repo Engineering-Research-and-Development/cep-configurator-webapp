@@ -21,6 +21,8 @@ export class AddRuleComponent implements OnInit {
   storedEngine = this.storage.engineType;
   storedEngineId =  this.storage.engineID;
   enabled = false;
+  events = [];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +35,7 @@ export class AddRuleComponent implements OnInit {
     this.getEngines();
     console.log(this.storedEngine);
     console.log(this.storedEngineId);
+    this.getEventTypes(this.storedEngineId);
   }
 
 
@@ -98,6 +101,14 @@ export class AddRuleComponent implements OnInit {
     this.ruleText = value.slice(0, this.startPos) + insertText.target.value + value.slice(this.endPos);
   }
 
+
+  getEventTypes(engineId) {
+    this.ruleService.getEventTypes(engineId).subscribe(res => {
+      this.events.push(res);
+      console.log(this.events);
+    });
+
+  }
 
   goBack(): void {
     this.location.back();
