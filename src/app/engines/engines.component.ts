@@ -17,6 +17,9 @@ export class EnginesComponent implements OnInit {
   userType = {
     user: 'admin'
   };
+  keepRule = false;
+
+  test = (x) => { this.keepRule = x; };
 
 
   getEngines(): void {
@@ -41,7 +44,7 @@ export class EnginesComponent implements OnInit {
   }
 
   deleteEngine(engineId) {
-    this.ruleService.deleteEngine(engineId);
+    this.ruleService.deleteEngine(engineId, this.keepRule);
     // const index = this.engines.findIndex(compare);
     const index = this.engines.findIndex(compare);
     console.log(engineId, index);
@@ -58,12 +61,10 @@ export class EnginesComponent implements OnInit {
     this.enginesUser = [];
     this.engines.forEach(element => {
        if (element.engineId === this.storage.engineID) {
-        console.log(element.engineId);
         this.storage.setItem('userEngine', element.engineId);
-
+        console.log(this.storage.engineID);
        }
     });
-    console.log(this.storage);
   }
 
 }

@@ -1,0 +1,19 @@
+<table class="table table-striped table-dark">
+  <thead>
+    <th>Rule ID</th>
+    <th>Restore this</th>
+  </thead>
+    <tr *ngFor="let rule of archiveRules">
+      <td>
+        {{rule.name}}
+        <div style="display: none;">
+          {{rule.text}} {{rule.action}} {{rule.description}}
+        </div>
+      </td>
+      <td>
+        <button class="btn btn-primary" (click)="restore(rule.name, rule.text, rule.action, rule.description);">Restore</button>
+      </td>
+    </tr>
+</table>
+
+<button class="btn btn-secondary" (click)="goBack();">Back</button>

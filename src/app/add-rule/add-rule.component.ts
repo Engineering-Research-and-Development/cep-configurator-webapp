@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { Http } from '@angular/http';
 
+
 import { RuleService } from '../rule.service';
 
 @Component({
@@ -108,6 +109,10 @@ export class AddRuleComponent implements OnInit {
       console.log(this.events);
     });
 
+  }
+
+  rulesToRestore() {
+    window.location.href = '/archived-rules';
   }
 
   goBack(): void {

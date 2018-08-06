@@ -16,6 +16,8 @@ import { Rule } from './rule.model';
 import { EnginesComponent } from './engines/engines.component';
 import { EngineDetailsComponent } from './engine-details/engine-details.component';
 import { AddEngineComponent } from './add-engine/add-engine.component';
+import { LoginComponent } from './login/login.component';
+import { ArchivedRulesComponent } from './archived-rules/archived-rules.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AddEngineComponent } from './add-engine/add-engine.component';
     RulesComponent,
     EnginesComponent,
     EngineDetailsComponent,
-    AddEngineComponent
+    AddEngineComponent,
+    LoginComponent,
+    ArchivedRulesComponent
   ],
   imports: [
     BrowserModule,

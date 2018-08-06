@@ -10,6 +10,8 @@ import { RuleService } from '../rule.service';
 })
 export class AddEngineComponent implements OnInit {
 
+  restore = [];
+
   constructor(
     private ruleService: RuleService,
     private location: Location
@@ -27,6 +29,8 @@ export class AddEngineComponent implements OnInit {
 
     this.ruleService.addEngine(data);
   }
+
+
 
   goBack(): void {
     this.location.back();

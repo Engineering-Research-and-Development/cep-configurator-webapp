@@ -82,7 +82,7 @@ export class RuleService {
     const url = 'http://localhost:8091/engines';
 
     this.http.post(url, data).subscribe(res => { if (res.status === 200) {
-        console.log('suxes');
+        console.log('suxes', data.engineId);
        } else {
         console.log('fail');
        }
@@ -100,14 +100,20 @@ export class RuleService {
     });
   }
 
-  deleteEngine(id) {
-    const url = `http://localhost:8091/engines/${id}`;
+  deleteEngine(id, keepRule) {
+    const url = `http://localhost:8091/engines/${id}?cascade=${keepRule}`;
     this.http.delete(url).subscribe();
   }
 
 
   getEventTypes(engineId) {
     const URL = `http://localhost:8091/engines/${engineId}/event-types`;
+
+    return this.http.get(URL).map(res => res.json());
+  }
+
+  getArchiveRules() {
+    const URL = 'http://localhost:8091/archived-rules';
 
     return this.http.get(URL).map(res => res.json());
   }
