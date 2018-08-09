@@ -8,9 +8,17 @@ export class RuleService {
   constructor(private http: Http, private route: ActivatedRoute) {}
 
   getEngines(): any {
+
+      const token = this.route.snapshot.paramMap.get('access_token');
+      const header = new Headers({ 'x-auth-token': `${token}` });
+
+    // tslint:disable-next-line:prefer-const
+    let opts = new RequestOptions();
+    opts.headers = header;
+
     return this.http
-      .get('http://localhost:8091/engines')
-      .map(res => res.json());
+    .get('http://localhost:8091/engines', opts)
+    .map(res => res.json());
   }
 
 

@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
 
   config = {
-    'clientID': '9427e5d4-aef7-4897-9ff7-13a6c588794c',
-    'clientSecret': '86b6419f-e342-4399-a838-0d6e2a2536aa',
+    'clientID': 'c25015f3bb924a76b5828a43ed487ca1',
+    'clientSecret': '045b472fc0e34b9ebe5e38ac70753765',
     'callbackUrl': 'http://localhost:4200/engines',
     'URL': 'http://localhost:3000'
   };
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   login() {
     console.log(this.config);
     // tslint:disable-next-line:max-line-length
-    window.location.href = `${this.config.URL }/oauth2/authorize/?response_type=code&client_id=${this.config.clientID}&state=xyz&redirect_uri=${this.config.callbackUrl}`;
+    window.location.href = `${this.config.URL }/oauth2/authorize/?response_type=token&client_id=${this.config.clientID}&state=xyz&redirect_uri=${this.config.callbackUrl}`;
   }
 
 
